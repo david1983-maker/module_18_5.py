@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <header>
+         {% block pagename %}
+         <h1>{{text}}</h1>
+         {% endblock %}
+     </header>
+
+     <nav>
+         {% block menu %}
+         <ul>
+             <li><a href="http://127.0.0.1:8000/#/"><h3>Главная страница</h3></a></li>
+             <li><a href="http://127.0.0.1:8000/games/"><h3>Магазин</h3></a></li>
+             <li><a href="http://127.0.0.1:8000/cart/"><h3>Корзина</h3></a></li>
+         </ul>
+         {% endblock %}
+     </nav>
+
+     <main>
+         {% block content %}
+            {% for i in games %}
+               <p>{{i}} <button>Купить</button></p>
+            {% endfor %}
+         {% endblock %}
+     </main>
+
+
+
+</body>
+</html>
