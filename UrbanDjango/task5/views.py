@@ -22,11 +22,16 @@ def sign_up_by_django(request):
             age = form.cleaned_data['age']
             if username in users:
                 info['error'] = f"Пользователь {username} уже существует"
+            
+            elif len(password) < 8:
+                info['error'] = ('Пароль должен быть не менее 8 символов')
 
             elif repeat_password != password:
                 info['error'] = ('Пароли не совпадают')
+            
             elif int(age) < 18:
                 info['error'] = ("Вы должны быть старше 18")
+            
             else:
                 info['text'] = (f'Приветсвуем, {username}!')
 
@@ -44,11 +49,16 @@ def sign_up_by_html(request):
         age = request.POST.get('age')
         if username in users:
             info['error'] = f"Пользователь {username} уже существует"
-
+        
+        elif len(password) < 8:
+                info['error'] = ('Пароль должен быть не менее 8 символов')
+        
         elif repeat_password != password:
             info['error'] = ('Пароли не совпадают')
+       
         elif int(age) < 18:
             info['error'] = ("Вы должны быть старше 18")
+        
         else:
             info['text'] = (f'Приветсвуем, {username}!')
 
